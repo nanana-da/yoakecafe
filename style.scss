@@ -1,0 +1,962 @@
+// <uniquifier>: Use a unique and descriptive class name
+.noto-serif-jp {
+  font-family: "Noto Serif JP", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+// <uniquifier>: Use a unique and descriptive class name
+.inter {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.italiana-regular {
+  font-family: "Italiana", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Koku Mincho Regular";
+  src: url("/fonts/font_1_kokumr_1.00_rls.ttf") format("truetype");
+}
+
+$BaceColor: #564642;
+$MainColor: #225670;
+$PointColor: #f0592c;
+$SubColor: #b2978f;
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $MainColor;
+  font-size: clamp(1.438rem, 0.824rem + 3.07vw, 3.125rem);
+  margin-bottom: 30px;
+
+  padding-bottom: 35px;
+  letter-spacing: 0.2rem;
+
+  & img {
+    width: 80px;
+    padding: 0 20px;
+  }
+}
+
+h3 {
+  z-index: 100;
+  transform: translate(3%, 4vw);
+  font-size: clamp(2.063rem, 1.734rem + 1.48vw, 3.438rem);
+  color: $SubColor;
+  font-family: "Italiana", sans-serif;
+}
+
+body {
+  background-color: #e0cfbe;
+}
+
+p,
+span,
+dt,
+dd {
+  font-family: "Noto Serif JP", serif;
+}
+
+P {
+  letter-spacing: 0.1rem;
+}
+
+h1,
+h2,
+h4,
+h5,
+li {
+  font-family: "Koku Mincho Regular";
+}
+
+h6 {
+  font-family: "Italiana", sans-serif;
+}
+
+//*ヘッダー*//
+header {
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  height: 60px;
+  width: 100%;
+  padding: 15px 10px;
+  z-index: 100;
+
+  & a {
+    margin-right: auto;
+    height: 45px;
+
+    & .shop-logo {
+      width: 100%;
+    }
+  }
+
+  .insta-icon-area {
+    display: flex;
+    height: 45px;
+    border: 1px solid $MainColor;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #e0cfbe;
+
+    & img {
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+  }
+
+  .hamburger-menu {
+    z-index: 300;
+    position: relative;
+    width: 45px;
+    height: 45px;
+    margin-left: 11px;
+    border: 1px solid $MainColor;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #e0cfbe;
+
+    .hamburger-line-area {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -40%);
+      width: 21.5px;
+      height: 21px;
+
+      & span {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 2px;
+        background-color: $MainColor;
+        margin-bottom: 5px;
+        transition: all 0.5s;
+      }
+    }
+
+    &.is-active .hamburger-line-area span:nth-of-type(1) {
+      transform-origin: left top;
+      transform: translateX(4px) rotate(45deg);
+    }
+
+    &.is-active span:nth-of-type(2) {
+      opacity: 0;
+    }
+
+    &.is-active .hamburger-line-area span:nth-of-type(3) {
+      transform-origin: left bottom;
+      transform: translateX(4px) rotate(-45deg);
+    }
+  }
+
+  .p-header_nav {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba($color: #b2978f, $alpha: 0.95);
+
+    transition: all 0.7s;
+    z-index: 200;
+    overflow: auto;
+    color: $MainColor;
+
+    & ul {
+      width: 60%;
+      margin: 0 auto;
+      padding: 30% 0;
+
+      & li {
+        padding-bottom: 50px;
+        text-align: center;
+        letter-spacing: 0.08rem;
+        font-size: 1.4rem;
+      }
+      
+    }
+  }
+
+  .p-header_nav.is-active {
+    right: 0;
+  }
+
+}
+
+//*メインビジュ*//
+.top-visarea {
+  display: flex;
+  width: 100vw;
+  padding: 24vh 0;
+
+  & .top-vis-text {
+    font-family: "Italiana", sans-serif;
+    font-size: clamp(0.85rem, 0.752rem + 0.47vw, 1.3rem);
+    writing-mode: vertical-rl;
+    color: $SubColor;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5vw;
+    letter-spacing: 0.08rem;
+
+    /*上下左右中央揃え*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & .vis-picarea {
+    background-image: url(image/top-vis-pic.png);
+    width: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    /*上下左右中央揃え*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & .mobile-top-picline {
+      width: 100%;
+      opacity: 0;
+    }
+
+    /*pc*/
+    & .pc-top-picline {
+      display: none;
+    }
+  }
+}
+
+/*画像ぼかし*/
+.img-blur {
+  filter: blur(10px);
+  animation-name: blur;
+  animation-duration: 1.8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes blur {
+  0% {
+    filter: blur(10px);
+  }
+
+  100% {
+    filter: blur(0);
+  }
+}
+
+//**スクロールボタン**//
+.scrollbtn {
+  position: relative;
+  text-align: center;
+
+  & .scroll-text {
+    color: $MainColor;
+    padding-bottom: 8px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    font-family: "Italiana", sans-serif;
+
+    & span {
+      position: relative;
+      display: inline-block;
+      font-size: 0.9rem;
+      color: $MainColor;
+      padding-bottom: 28px;
+    }
+
+    /*スクロール矢印作成*/
+    &::before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      left: 0;
+      right: 0;
+      bottom: 20px;
+      margin: auto;
+      border-bottom: 1.5px solid $MainColor;
+      border-left: 1.5px solid $MainColor;
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+//**お知らせ**//
+#News-area {
+  padding-top: 25%;
+  text-align: center;
+  margin-bottom: 130px;
+
+  & h1 {
+    letter-spacing: 0.2rem;
+  }
+
+  & img {
+    padding: 0 20px;
+    width: 80px;
+  }
+
+  & a:hover {
+    opacity: 50%;
+    transition: 0.3s;
+  }
+
+  & p {
+    padding-bottom: 15px;
+    color: $MainColor;
+
+    & span {
+      padding-right: 15px;
+    }
+  }
+}
+
+//js//
+.scroll_up {
+  transition: 0.8s ease-in-out;
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+.scroll_up.on {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+////
+
+//**お店のこと**//
+#shop-about-area {
+  width: 85vw;
+  margin-bottom: 100px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+
+  & p {
+    line-height: 1.6;
+    letter-spacing: 0.1em;
+    color: $MainColor;
+  }
+
+  & h2 {
+    letter-spacing: 0.2rem;
+  }
+
+  .about-pics-area {
+    & .about-pic1 {
+      width: 40%;
+    }
+
+    & .about-pic2 {
+      width: 79%;
+      transform: translate(22%, -20%);
+    }
+  }
+
+  & h2 {
+    font-size: 1.9rem;
+    line-height: 1.5;
+    padding-bottom: 6%;
+    color: $MainColor;
+  }
+}
+
+//**メニュー**//
+#menu-area {
+  background-color: #f3ece1;
+  width: 100vw;
+  padding-bottom: 41%;
+  margin-bottom: 100px;
+
+  & .menu-border-line {
+    width: 81.76%;
+    border: solid 1px #564642b6;
+    /* 内側の線になる一本線の枠線をひく*/
+    outline: solid 2.5px #564642b6;
+    /* 外側の線になる一本線の枠線をひく*/
+    outline-offset: 8px;
+    /* 内側の線になる一本線の枠線をひく*/
+    transform: translateY(80px);
+    margin: 0 auto;
+    padding-top: 30px;
+
+    & .food,
+    .dessert,
+    .drink {
+      padding-bottom: 55px;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    & .menu-title {
+      padding-top: 30px;
+    }
+
+    //****ここから！！！！！****///
+
+    .food {
+      & .menu-left-area {
+        display: flex;
+        align-items: center;
+        padding-bottom: 30px;
+
+        & .slider {
+          position: relative;
+          width: 60vw;
+          margin: 0 auto;
+          overflow: hidden;
+
+          & .slider_outer {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: 0.6s ease-in-out;
+
+            & img {
+              width: 100%;
+            }
+
+            & .long-image {
+              width: 65%;
+            }
+          }
+        }
+
+        //**進む・戻るボタン**//
+        & .back-btn {
+          width: 20px;
+          height: 20px;
+          border-bottom: 2px solid $SubColor;
+          border-left: 2px solid $SubColor;
+          transform: rotate(45deg);
+          cursor: pointer;
+        }
+
+        & .next-btn {
+          width: 20px;
+          height: 20px;
+          border-bottom: 2px solid $SubColor;
+          border-left: 2px solid $SubColor;
+          transform: scale(-1, 1) rotate(45deg);
+          cursor: pointer;
+        }
+      }
+
+      & .menu-right-area {
+        padding-bottom: 30px;
+      }
+
+      & .menu-texts {
+        margin-bottom: 20px;
+
+        & .menu-names {
+          color: $BaceColor;
+          margin-bottom: 15px;
+          margin-top: -20px;
+
+          & h5 {
+            font-size: 1.5rem;
+          }
+
+          & .price::after {
+            content: "円";
+            color: $BaceColor;
+            font-size: 0.75rem;
+            padding-left: 5px;
+          }
+        }
+
+        & p {
+          font-family: "Inter", sans-serif;
+          color: $BaceColor;
+        }
+      }
+
+      & .menu-texts2,
+      .menu-texts3,
+      .menu-texts4 {
+        display: none;
+      }
+
+      & .menu-click-pic-area {
+        display: flex;
+        justify-content: space-between;
+        width: 75vw;
+        margin: 0 auto;
+        padding-bottom: 8px;
+
+        & img {
+          width: 22%;
+        }
+
+        & .menu-click-pic2,
+        .menu-click-pic3,
+        .menu-click-pic4 {
+          opacity: 0.25;
+        }
+      }
+
+      & .menu-click-line {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & span {
+          width: 25%;
+          border-top: 1px solid $BaceColor;
+        }
+
+        & p {
+          padding: 0 30px;
+        }
+      }
+    }
+  }
+}
+
+//* テイクアウト*//
+#takeout {
+  width: 88%;
+  border-top: 2px solid $BaceColor;
+  padding-top: 50px;
+  padding-bottom: 80px;
+  margin: 0 auto;
+
+  & h4 {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+
+    &::before {
+      content: "+";
+      color: $PointColor;
+      font-size: 19px;
+      padding-right: 8px;
+    }
+
+    &::after {
+      content: "+";
+      color: $PointColor;
+      font-size: 19px;
+      padding-left: 8px;
+    }
+  }
+
+  & .takeout-texts {
+    margin-bottom: 10%;
+
+    & p {
+      font-family: "Inter", sans-serif;
+    }
+  }
+
+  & .takeout-pic {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    & .takeout-small {
+      width: 27vw;
+      height: 30vw;
+
+      object-fit: cover;
+      margin-top: 50%;
+    }
+
+    & .takeout-big {
+      width: 45vw;
+      height: 60vw;
+      object-fit: cover;
+    }
+  }
+}
+
+//** instagram **//
+.insta-area {
+  width: 85vw;
+  margin: 0 auto;
+  margin-bottom: 100px;
+
+  & .insta-area-texts {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+
+    & span {
+      display: inline-block;
+      width: 100%;
+      height: 10px;
+      border-top: solid 1.5px $BaceColor;
+      border-bottom: solid 1px $BaceColor;
+    }
+
+    & h6 {
+      font-size: 1.35rem;
+      padding: 0 10px 0 10px;
+      transform: translateY(-13px);
+      color: $MainColor;
+    }
+  }
+
+  & .insta-pic-area {
+    width: 68vw;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-bottom: 36.68px;
+
+    & img {
+      width: 33vw;
+      padding-top: 10px;
+    }
+
+    & .insta-pic-pc {
+      display: none;
+    }
+  }
+
+  & .insta-borderline {
+    display: inline-block;
+    width: 85vw;
+    height: 10px;
+    border-top: solid 1px $BaceColor;
+    border-bottom: solid 1.5px $BaceColor;
+  }
+
+  & .insta-pic-area2 {
+    display: none;
+  }
+}
+
+//**店舗情報**//
+#shop-info-area {
+  padding-bottom: 100px;
+  width: 85vw;
+  margin: 0 auto;
+
+  .shop-info-summary {
+    & img {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    & p {
+      font-size: 1.3rem;
+      color: $MainColor;
+      margin-bottom: 20px;
+    }
+
+    & div {
+      display: flex;
+      padding-bottom: 10px;
+
+      &:nth-child(5) {
+        padding-bottom: 30px;
+      }
+    }
+    & dt {
+      letter-spacing: 0.1em;
+      color: $MainColor;
+      display: table-cell;
+      width: 100px;
+    }
+
+    & dd {
+      letter-spacing: 0.1em;
+      color: $MainColor;
+    }
+
+    & span {
+      letter-spacing: 0.1em;
+      font-size: 1rem;
+      color: $PointColor;
+      padding: 8px 15px;
+      border: 1px solid $PointColor;
+      border-radius: 20px;
+
+      &:hover {
+        background-color: $PointColor;
+        color: #e0cfbe;
+        transition: all 0.3s;
+      }
+    }
+  }
+}
+
+//topへ移動//
+.pagetop {
+  transform: translate(85vw, -20px);
+  width: 30px;
+  height: 40px;
+  text-align: center;
+
+  & p {
+    display: inline;
+    color: $MainColor;
+    font-family: "Italiana", sans-serif;
+  }
+
+  & span {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    margin: auto;
+    border-top: 2px solid $MainColor;
+    border-left: 2px solid $MainColor;
+    transform: rotate(45deg);
+  }
+}
+
+//＊＊フッター＊＊//
+footer {
+  width: 100%;
+  background-color: #d3bfb1;
+  padding: 50px 0;
+
+  & .footer-newsarea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 50vw;
+
+    & img {
+      width: 15%;
+      padding-right: 7px;
+    }
+
+    & span {
+      color: $MainColor;
+    }
+  }
+}
+
+.copy-right {
+  background-color: #d3bfb1;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #b2978f;
+}
+
+//**//タブレット・パソコン//**//
+@media screen and (min-width: 701px) {
+  header {
+    padding: 22px 20px !important;
+  }
+
+  //**ファーストビュー**//
+  .top-visarea {
+    padding: 19vh 0 12.5vh 0 !important;
+    display: flex;
+    justify-content: space-between;
+
+    & .vis-picarea {
+      background-image: url(image/PC/top-vish-PC.png) !important;
+      background-size: contain !important;
+      height: 63vh;
+      width: 70%;
+      max-width: 100%;
+
+      & .mobile-top-picline {
+        display: none;
+      }
+    }
+
+    .top-vis-text {
+      padding: 0 3vw !important;
+    }
+  }
+
+  //**お店について**//
+  #shop-about-area {
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+
+    & .about-pics-area {
+      width: 35vw;
+      max-width: 480px;
+      padding-right: 8%;
+    }
+
+    & .about-textes-area {
+      width: 35vw;
+      max-width: 600px;
+      padding-left: 8%;
+      padding-top: 5%;
+
+      & p {
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  //**メニュー**//
+  #menu-area {
+    padding-bottom: 20vh !important;
+    margin-bottom: 150px !important;
+
+    & .food,
+    .dessert,
+    .drink {
+      display: flex;
+      position: relative;
+      max-width: 1200px;
+
+      & h3 {
+        position: absolute;
+        top: -3%;
+        left: -3%;
+        z-index: 10;
+      }
+
+      & .menu-left-area {
+        max-width: 553px;
+        margin: 0 auto;
+        padding-right: 5%;
+
+        .slider {
+          width: 40vw !important;
+          display: flex;
+        }
+
+        .next-btn,
+        .back-btn {
+          width: 7% !important;
+          height: 7% !important;
+        }
+      }
+
+      .menu-right-area {
+        width: 35vw;
+        padding-top: 7%;
+
+        & .menu-texts {
+          padding-bottom: 30px;
+        }
+
+        & .menu-click-area {
+          width: 100%;
+
+          & .menu-click-pic-area {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  //デザートだけ//
+  .dessert {
+    position: relative;
+    display: block;
+    flex-direction: row-reverse;
+
+    .dessert-h3 {
+      position: absolute;
+      left: 79% !important;
+    }
+
+    .menu-left-area {
+      padding-right: 0 !important;
+      padding-left: 5%;
+    }
+
+    & .menu-pictures {
+      transform: translateX(13%) !important;
+    }
+  }
+
+  //**テイクアウト**//
+  #takeout {
+    & .takeout-pic {
+      display: flex;
+      justify-content: center !important;
+
+      & .takeout-big {
+        width: 50% !important;
+        height: 100% !important;
+      }
+
+      & .takeout-small {
+        width: 35% !important;
+        height: 100% !important;
+        padding-right: 8%;
+      }
+    }
+  }
+
+  //**インスタグラム**//
+  .insta-area {
+    width: 70vw;
+
+    & .insta-pic-areas {
+      display: flex;
+      text-align: center;
+
+      & .insta-pic-area {
+        display: block;
+
+        & img {
+          width: 15vw;
+          max-width: 250px;
+          padding-top: 10px;
+        }
+
+        & .insta-pic-pc {
+          display: inline-block;
+        }
+      }
+    }
+
+    & .insta-borderline {
+      width: 70vw;
+    }
+  }
+
+  //**店舗情報**//
+  .shop-info-summary {
+    width: 85vw;
+    display: flex;
+    justify-content: space-around;
+
+    & img {
+      margin: 0 !important;
+
+      width: 50% !important;
+      max-width: 650px;
+    }
+    & dl {
+      padding-top: 2%;
+    }
+  }
+
+  //**フッター**//
+
+  .footer-newsarea {
+    & img {
+      width: 40px !important;
+    }
+  }
+}
